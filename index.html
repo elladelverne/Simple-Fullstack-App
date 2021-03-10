@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<div class= "all">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Game Share</h1>
+    <form id="login">
+     <div class = "personal">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" />
+        <br />
+        <label for="password">Password : </label>
+        <input type="password" name="password" id="password" />
+        <input type="submit" value="Login / Create Account" />
+    </form>
+ </div>
+    <section id="users">
+        
+    </section>
+</br>
+    <form id="createReview">
+    <div class = "game info">
+        <label for="videoName">Videogame: </label>
+        <input type="text" name="videoName" id="videoName" />
+    </br>
+        <label for="publisher">Publisher: </label>
+        <select type="publisher" id="publisher" />
+            <option value="none"></option>
+            <option value="tencent">Tencent</option>
+            <option value="sonyinteractice">Sony Interactive Entertainment</option>
+            <option value="mircosoft">Microsoft</option>
+            <option value="blizzard">Activision Blizzard</option>
+            <option value="ea">Electronic Arts</option>
+            <option value="nintendo">Nintendo</option>
+            <option value="bandainamco">Bandai Namco</option>
+            <option value="taketwo">Take-Two Interactive</option>
+            <option value="ubisoft">Ubisoft</option>
+            <option value="squareenix">Square Enix</option>
+            <option value="konami">Konami Games</option>
+            <option value="sega">Sega</option>
+            <option value="capcom">Capcom</option>           
+    </br>
+        <label for="developer">Developer: </label>
+        <input type="text" name="developer" id="developer" />
+    </br>
+        <label for="genre">Genre: </label>
+        <select name="genre" id="genre">
+            <option value="none"></option>
+            <option value="sports">Sports</option>
+            <option value="racing">Racing</option>
+            <option value="mmo">MMO</option>
+            <option value="fighting">Fighting</option>
+            <option value="rpg">RPG</option>
+            <option value="action">Action</option>
+            <option value="platform">Platformer</option>
+            <option value="horror">Horror</option>
+            <option value="survival">Survival</option>
+            <option value="puzzle">Puzzle</option>
+        </select>
+    </div>
+    </br>
+        <label for="rate">Rating out of 5: </label>
+        <select name="rate" id="rate">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+    </br>
+        <textarea id="newReview">Why?</textarea>
+        <input type="submit" value="Submit" />
+    </form>
+    <section id="posts">
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+</div>

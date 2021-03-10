@@ -1,0 +1,23 @@
+div.post {
+    border: 1px solid black;
+    width: 50%;
+    margin: 10px auto;
+}
+div.details {
+    background-color: darkgrey;
+    color: white;
+}
+div.details div {
+    display: inline;
+    border: 1px solid black;
+}
+div.personal  {
+    border: 1px dotted red;
+    width: 20%;
+    background-color: black;
+    color: cornsilk;
+}
+div.all {
+    background-color: rgba(17, 129, 41, 0.63);
+    
+}
