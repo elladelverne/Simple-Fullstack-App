@@ -2,6 +2,7 @@ div.post {
     border: 1px solid black;
     width: 50%;
     margin: 10px auto;
+    
 }
 div.details {
     background-color: darkgrey;
@@ -17,7 +18,7 @@ div.personal  {
     background-color: black;
     color: cornsilk;
 }
-div.all {
-    background-color: rgba(17, 129, 41, 0.63);
+div.reviews {
+
     
 }
