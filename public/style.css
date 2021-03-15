@@ -2,6 +2,7 @@ div.post {
     border: 1px solid black;
     width: 50%;
     margin: 10px auto;
+    
 }
 div.details {
     background-color: darkgrey;
@@ -9,6 +10,15 @@ div.details {
 }
 div.details div {
     display: inline;
-    width: 30%;
     border: 1px solid black;
+}
+div.personal  {
+    border: 1px dotted red;
+    width: 20%;
+    background-color: black;
+    color: cornsilk;
+}
+div.reviews {
+
+    
 }
