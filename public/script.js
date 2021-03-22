@@ -1,31 +1,31 @@
 //2. User can create new post, send to server
-const $postsContainer = document.getElementById("posts")
+const $postsContainer = document.getElementById("reviews")
 //1.1 js reference to the section element with id users
 const $usersContainer = document.getElementById("users")
 document.getElementById("login")
     .onsubmit = login
 //2.1 Set createPost function as onsubmit handler for the create post form 
-document.getElementById("createPost")
-    .onsubmit = createPost
+document.getElementById("createReview")
+    .onsubmit = createReview
 
-spawnPosts()
+spawnReviews()
 //1.4 call function to spawn user elements
 spawnUsers()
 //2.2 Define function createPost to send post to server
 let user_id
 
-function createPost(e) {
+function createReview(e) {
     e.preventDefault()
     const payload = {
         body: JSON.stringify({
-            text: document.getElementById("newPost").value
+            text: document.getElementById("newReview").value
         }),
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
     }
-    fetch("/posts", payload)
+    fetch("/reviews", payload)
         .then(res => res.json())
         .then(res => console.log(res.body))
         .catch(error => console.error(error))
@@ -51,20 +51,18 @@ function login(e) {
         .catch(error => console.error(error))
 }
 
-function spawnPosts() {
+function spawnReviews() {
    //GET posts from server
-   fetch("/posts")
+   fetch("/reviews")
     .then(res => res.json())
     .then(posts => {
-        const postsHTML = posts.map( post => `
-        <div class="post">
-            <p>${post.content}</p>
-            <div class="details">
-                <div>${post.userid}</div>
-            </div>
+        const reviewsHTML = reviews.map( review => `
+        <div class="review">
+            <p>${review.content}</p>
+            
         </div>
         ` ).join("")
-        $postsContainer.innerHTML = postsHTML
+        $reviewsContainer.innerHTML = reviewsHTML
     })
     .catch(err => console.error(err))
    
