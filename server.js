@@ -9,8 +9,8 @@ const users = loadData().users
 app.use(express.static('public'))
 app.use(express.json())
 
-app.get("/posts", (req,res) => {
-    const sql = "SELECT * FROM posts;"
+app.get("/reviews", (req,res) => {
+    const sql = "SELECT * FROM reviews;"
     db.all(sql,[],(err, rows) => {
         res.send(rows)
     })
@@ -37,23 +37,23 @@ app.post("/friends", (req, res) => {
 })
 
 //3.2 define request handler for POST on /posts
-app.post("/posts", (req,res)=> {
-    const post = req.body;
+app.post("/reviews", (req,res)=> {
+    const review = req.body;
     //3.2.1. verify the post is at least 5 characters long
-    if (post.text.length >= 5) {
+    if (review.text.length >= 5) {
         //3.2.2. add to posts array if valid
-        const sql = "INSERT INTO posts (content, user_id) VALUES (?,?);"
-        db.run(sql,[post.text,post.user_id])
+        const sql = "INSERT INTO reviews (content, user_id) VALUES (?,?);"
+        db.run(sql,[review.text,review.user_id])
         //3.2.3. send response 'New post successfully saved.'
         res.send({
-            message: "Post successfully saved"
+            message: "Review successfully saved"
         })
     }
     //3.2.4. if invalid send error response
     else {
         res.status(401)
         res.send({
-            message: "Post is not long enough."
+            message: "Review is not long enough."
         })
     }
 })

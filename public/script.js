@@ -1,5 +1,5 @@
 //2. User can create new post, send to server
-const $postsContainer = document.getElementById("reviews")
+const $reviewsContainer = document.getElementById("reviews")
 //1.1 js reference to the section element with id users
 const $usersContainer = document.getElementById("users")
 document.getElementById("login")
@@ -55,7 +55,7 @@ function spawnReviews() {
    //GET posts from server
    fetch("/reviews")
     .then(res => res.json())
-    .then(posts => {
+    .then(reviews => {
         const reviewsHTML = reviews.map( review => `
         <div class="review">
             <p>${review.content}</p>
