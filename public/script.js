@@ -1,24 +1,20 @@
-//2. User can create new post, send to server
 const $reviewsContainer = document.getElementById("reviews")
-//1.1 js reference to the section element with id users
 const $usersContainer = document.getElementById("users")
-document.getElementById("login")
-    .onsubmit = login
-//2.1 Set createPost function as onsubmit handler for the create post form 
 document.getElementById("createReview")
-    .onsubmit = createReview
+    .onclick = createReview
 
-spawnReviews()
-//1.4 call function to spawn user elements
-spawnUsers()
-//2.2 Define function createPost to send post to server
+//spawnReviews()
+
+//spawnUsers()
+
 let user_id
 
 function createReview(e) {
     e.preventDefault()
     const payload = {
         body: JSON.stringify({
-            text: document.getElementById("newReview").value
+            text: document.getElementById("newReview").value,
+            rate: document.getElementById("rating").value
         }),
         method: "POST",
         headers: {
@@ -52,7 +48,6 @@ function login(e) {
 }
 
 function spawnReviews() {
-   //GET posts from server
    fetch("/reviews")
     .then(res => res.json())
     .then(reviews => {
@@ -68,10 +63,7 @@ function spawnReviews() {
    
 }
 
-//1.2 define a function to spawn user elements
-//4.2 update spawnUsers to pull from server
 function spawnUsers() {
-    //GET posts from server
     fetch("/users")
      .then(res => res.json())
      .then(users => {
@@ -89,10 +81,7 @@ function spawnUsers() {
      .catch(err => console.error(err))
     
  }
-//1.3 each user element should be a div that shows user info
-//... and has a button that says Add Friend (doesn't work)
 
-//5. add Friend button works
 function addFriend(e) {
     const $userDiv = e.target.parentElement
     const friend_id = $userDiv.userid
