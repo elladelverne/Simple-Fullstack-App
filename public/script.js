@@ -3,7 +3,7 @@ const $usersContainer = document.getElementById("users")
 document.getElementById("createReview")
     .onclick = createReview
 
-//spawnReviews()
+spawnReviews()
 
 //spawnUsers()
 
@@ -13,8 +13,12 @@ function createReview(e) {
     e.preventDefault()
     const payload = {
         body: JSON.stringify({
-            text: document.getElementById("newReview").value,
-            rate: document.getElementById("rating").value
+            game: document.getElementById("videoName").value,
+            publisher: document.getElementById("publisher").value,
+            developer: document.getElementById("developer").value,
+            genre: document.getElementById("genre").value,
+            rate: document.getElementById("rating").value,
+            text: document.getElementById("newReview").value
         }),
         method: "POST",
         headers: {
@@ -52,9 +56,29 @@ function spawnReviews() {
     .then(res => res.json())
     .then(reviews => {
         const reviewsHTML = reviews.map( review => `
-        <div class="review">
-            <p>${review.content}</p>
-            
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+             <p>John</p>
+             <img src="maleAvatar.PNG" class="img-circle" height="45" width="45" alt="Avatar">
+            </div>
+          </div>
+          <div class="col-sm-9" >
+            <div class="well">
+              <p>
+                Game:Call Of Duty Black Ops 1<br>
+                 Publisher: Activison Blizzard<br>
+                 Developer: Treyarch<br>
+                 Genre: Action<br>
+                 Rating: ${review.rate}</br>
+                 Why: ${review.reason}
+              </p>
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-fire"></span> Enjoyed game
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-down"></span> Did not enjoy game
+            </div>
+          </div>
         </div>
         ` ).join("")
         $reviewsContainer.innerHTML = reviewsHTML
