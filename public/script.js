@@ -13,7 +13,7 @@ function createReview(e) {
     e.preventDefault()
     const payload = {
         body: JSON.stringify({
-            game: document.getElementById("videoName").value,
+            videogame: document.getElementById("videogame").value,
             publisher: document.getElementById("publisher").value,
             developer: document.getElementById("developer").value,
             genre: document.getElementById("genre").value,
@@ -66,11 +66,11 @@ function spawnReviews() {
           <div class="col-sm-9" >
             <div class="well">
               <p>
-                Game:Call Of Duty Black Ops 1<br>
-                 Publisher: Activison Blizzard<br>
-                 Developer: Treyarch<br>
-                 Genre: Action<br>
-                 Rating: ${review.rate}</br>
+                Game:${review.videogame}<br>
+                 Publisher: ${review.publisher}<br>
+                 Developer: ${review.developer}<br>
+                 Genre: ${review.genre}<br>
+                 Rating: ${review.rate}/5</br>
                  Why: ${review.reason}
               </p>
               <button type="button" class="btn btn-default btn-sm">

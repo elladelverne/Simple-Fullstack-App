@@ -36,8 +36,8 @@ app.post("/friends", (req, res) => {
 app.post("/reviews", (req,res)=> {
     const review = req.body;
     if (review.text.length >= 5) {
-        const sql = "INSERT INTO reviews (rate, reason, user_id) VALUES (?, ?, ?);"
-        db.run(sql,[review.rate, review.text, 0])
+        const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.text, 0])
         res.send({
             message: "Review successfully saved"
         })
