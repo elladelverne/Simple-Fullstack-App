@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Game Share</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="./mainPage.html">Log Out</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container text-center">    
+  <div class="row"></div>
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="#">My Profile</a></p>
+        <img src="maleAvatar.PNG" class="img-circle" height="65" width="65" alt="Avatar">
+      </div>
+      <div class="well">
+        <p><a href="#">Interests</a></p>
+        <p>
+          <span class="label label-default">News</span>
+          <span class="label label-primary">W3Schools</span>
+          <span class="label label-success">Labels</span>
+          <span class="label label-info">Football</span>
+          <span class="label label-warning">Gaming</span>
+          <span class="label label-danger">Friends</span>
+        </p>
+      </div>
+      <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Ey!</strong></p>
+        People are looking at your profile. Find out who.
+      </div>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-7">
+    
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+                <label for="videogame">Videogame: </label>
+                <input type="text" name="videogame" id="videogame" />
+            </br>
+                <label for="publisher">Publisher: </label>
+                <select type="publisher" id="publisher" >
+                    <option value="None"></option>
+                    <option value="Tencent">Tencent</option>
+                    <option value="Sony Interactive">Sony Interactive Entertainment</option>
+                    <option value="Mircosoft">Microsoft</option>
+                    <option value="Activision">Activision</option>
+                    <option value="Blizzard">Blizzard</option>
+                    <option value="EA">Electronic Arts</option>
+                    <option value="Nintendo">Nintendo</option>
+                    <option value="Bandainamco">Bandai Namco</option>
+                    <option value="Take-Two">Take-Two Interactive</option>
+                    <option value="Ubisoft">Ubisoft</option>
+                    <option value="Square Enix">Square Enix</option>
+                    <option value="Konami">Konami Games</option>
+                    <option value="SEGA">Sega</option>
+                    <option value="Cap-Com">Capcom</option>      
+                    <option value="Other">Other</option>    
+                    </select>
+            </br>
+                <label for="developer">Developer: </label>
+                <input type="text" name="developer" id="developer" />
+            </br>
+                <label for="genre">Genre: </label>
+                <select name="genre" id="genre">
+                    <option value="None"></option>
+                    <option value="Sports">Sports</option>
+                    <option value="Racing">Racing</option>
+                    <option value="Mmo">MMO</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Rpg">RPG</option>
+                    <option value="Action">Action</option>
+                    <option value="Platform">Platformer</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+              </br>
+                <label for="rate">Rating out of 5: </label>
+                <select id="rating" name="rate" id="rate">
+                <option value=" "> </option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                </select>
+            </br>
+                <textarea id="newReview">Why?</textarea>
+            
+              <button id="createReview" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-bullhorn"></span> share review
+              </button> 
+            </div>
+                
+            </div>
+          </div>
+        </div>
+    </br>
+      <div id="reviews">    
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Gamers unite</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>
