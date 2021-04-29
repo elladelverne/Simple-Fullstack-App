@@ -3,6 +3,7 @@ const $usersContainer = document.getElementById("users")
 document.getElementById("createReview")
     .onclick = createReview
 
+
 spawnReviews()
 
 //spawnUsers()
@@ -11,44 +12,26 @@ let user_id
 
 function createReview(e) {
     e.preventDefault()
-    const payload = {
-        body: JSON.stringify({
-            game: document.getElementById("videoName").value,
-            publisher: document.getElementById("publisher").value,
-            developer: document.getElementById("developer").value,
-            genre: document.getElementById("genre").value,
-            rate: document.getElementById("rating").value,
-            text: document.getElementById("newReview").value
-        }),
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }
-    fetch("/reviews", payload)
-        .then(res => res.json())
-        .then(res => console.log(res.body))
-        .catch(error => console.error(error))
-}
 
-function login(e) {
-    e.preventDefault()
-    const payload = {
+    fetch("/create", {
         body: JSON.stringify({
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
+            userId: localStorage.getItem("userId"),
+            videogame: document.getElementById("videogame"),
+            publisher: document.getElementById("publisher"),
+            developer: document.getElementById("developer"),
+            genre: document.getElementById("genre"),
+            rate: document.getElementById("rating"),
+            reason: document.getElementById("reason")
         }),
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
-    }
-    fetch("/login", payload)
+    })
         .then(res => res.json())
         .then(res => {
-            user_id = res.userId
         })
-        .catch(error => console.error(error))
+        .catch(err => console.error(err))
 }
 
 function spawnReviews() {
@@ -58,19 +41,19 @@ function spawnReviews() {
         const reviewsHTML = reviews.map( review => `
         <div class="row">
           <div class="col-sm-3">
-            <div class="well">
-             <p>John</p>
+            <div class="well" data-reviewid=${review.id}>
+             <p>${review.user_id}</p>
              <img src="maleAvatar.PNG" class="img-circle" height="45" width="45" alt="Avatar">
             </div>
           </div>
           <div class="col-sm-9" >
             <div class="well">
               <p>
-                Game:Call Of Duty Black Ops 1<br>
-                 Publisher: Activison Blizzard<br>
-                 Developer: Treyarch<br>
-                 Genre: Action<br>
-                 Rating: ${review.rate}</br>
+                Game:${review.videogame}<br>
+                 Publisher: ${review.publisher}<br>
+                 Developer: ${review.developer}<br>
+                 Genre: ${review.genre}<br>
+                 Rating: ${review.rate}/5</br>
                  Why: ${review.reason}
               </p>
               <button type="button" class="btn btn-default btn-sm">
@@ -129,64 +112,7 @@ function addFriend(e) {
 function loadData() {
     return {
         posts: [
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            },
-            {
-                text: "I got a new dog last night! It's so cute!",
-                user: "kimmy23",
-                datetime: new Date(),
-                numLikes: 3,
-                comments: []
-            }
-        ],
-        users: [
-            {
-                username: "kimmy23",
-                firstName: "Kimberly",
-                lastName: "Bash",
-                gender: "F",
-                age: 45
-            },
-            {
-                username: "wordup",
-                firstName: "John",
-                lastName: "Word",
-                gender: "M",
-                age: 31
-            },
-            {
-                username: "dogguy23",
-                firstName: "Rob",
-                lastName: "Obeneur",
-                gender: "M",
-                age: 62
-            },
-            {
-                username: "silentninja84",
-                firstName: "Lesa",
-                lastName: "Kirkland",
-                gender: "F",
-                age: 17
-            }
+            
         ]
     }
 }

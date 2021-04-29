@@ -6,11 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Title</h1>
-    <form>
-        <label>Username: </label>
-        <input type="text">
-        <button><a href="./index.html">Submit</a></button>
+    <h1>Sign In</h1>
+    <form id="login">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" />
+        <br />
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" />
+        
+        <input type="submit" value="Login / Create Account" />
     </form>
+    <script src="loginScript.js"></script>
 </body>
 </html>

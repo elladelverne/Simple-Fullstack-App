@@ -36,8 +36,8 @@ app.post("/friends", (req, res) => {
 app.post("/reviews", (req,res)=> {
     const review = req.body;
     if (review.text.length >= 5) {
-        const sql = "INSERT INTO reviews (rate, reason, user_id) VALUES (?, ?, ?);"
-        db.run(sql,[review.rate, review.text, 0])
+        const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.text, 0])
         res.send({
             message: "Review successfully saved"
         })
@@ -56,18 +56,22 @@ app.post("/login", (req, res) => {
         if (rows && rows.length > 0) {
             res.send({
                 message: "Successful login!",
-                user: rows[0]
+                userId: rows[0].id
             })
         }
     
     else {
         if (user.username.length >= 4 && user.password.length >= 4) {
-            const sql = "INSERT INTO users (username, password, first_name, last_name) VALUES (?,?,?,?)"
-            db.run(sql,[user.username, user.password, user.firstName, user.lastName],(err) => {
+            const sql = "INSERT INTO users (username, password) VALUES (?,?)"
+            db.run(sql,[user.username, user.password],(err) => {
                 if (err) console.error(err)
-                res.send({
-                    message: "Your account was successfully created.",
-                    userId: this.lastID
+                const idSQL = "SELECT id FROM users WHERE username = ?"
+                db.get(idSQL, [user.username], (err, row) => {
+                    if (err) console.error(err)
+                    if (row) res.send({
+                        message: "Your account was successfully created.",
+                        userId: row.id
+                    })
                 })
             })
         }
@@ -87,21 +91,7 @@ function loadData() {
     return {
         users:
         [
-            {
-                id: 1,
-                username: "jword",
-                password: "hello2021"
-            },
-            {
-                id: 2,
-                username: "tommyinnit",
-                password: "blockgame"
-            },
-            {
-                id: 3,
-                username: "joel15",
-                password: "kirby"
-            }
+            
         ]
     }
 }
