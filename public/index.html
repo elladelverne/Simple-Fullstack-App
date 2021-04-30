@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Gamepage</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -32,6 +32,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Messages</a></li>
+        <li><a href="./login.html" onclick="localStorage.clear()">Log Out</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group input-group">
@@ -83,26 +84,27 @@
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-                <label for="videoName">Videogame: </label>
-                <input type="text" name="videoName" id="videoName" />
+                <label for="videogame">Videogame: </label>
+                <input type="text" name="videogame" id="videogame" />
             </br>
                 <label for="publisher">Publisher: </label>
                 <select type="publisher" id="publisher" >
-                    <option value="none"></option>
-                    <option value="tencent">Tencent</option>
-                    <option value="sonyinteractice">Sony Interactive Entertainment</option>
-                    <option value="mircosoft">Microsoft</option>
-                    <option value="blizzard">Activision Blizzard</option>
-                    <option value="ea">Electronic Arts</option>
-                    <option value="nintendo">Nintendo</option>
-                    <option value="bandainamco">Bandai Namco</option>
-                    <option value="taketwo">Take-Two Interactive</option>
-                    <option value="ubisoft">Ubisoft</option>
-                    <option value="squareenix">Square Enix</option>
-                    <option value="konami">Konami Games</option>
-                    <option value="sega">Sega</option>
-                    <option value="capcom">Capcom</option>      
-                    <option value="other">Other</option>    
+                    <option value="None"></option>
+                    <option value="Tencent">Tencent</option>
+                    <option value="Sony Interactive">Sony Interactive Entertainment</option>
+                    <option value="Mircosoft">Microsoft</option>
+                    <option value="Activision">Activision</option>
+                    <option value="Blizzard">Blizzard</option>
+                    <option value="EA">Electronic Arts</option>
+                    <option value="Nintendo">Nintendo</option>
+                    <option value="Bandainamco">Bandai Namco</option>
+                    <option value="Take-Two">Take-Two Interactive</option>
+                    <option value="Ubisoft">Ubisoft</option>
+                    <option value="Square Enix">Square Enix</option>
+                    <option value="Konami">Konami Games</option>
+                    <option value="SEGA">Sega</option>
+                    <option value="Cap-Com">Capcom</option>      
+                    <option value="Other">Other</option>    
                     </select>
             </br>
                 <label for="developer">Developer: </label>
@@ -110,23 +112,24 @@
             </br>
                 <label for="genre">Genre: </label>
                 <select name="genre" id="genre">
-                    <option value="none"></option>
-                    <option value="sports">Sports</option>
-                    <option value="racing">Racing</option>
-                    <option value="mmo">MMO</option>
-                    <option value="fighting">Fighting</option>
-                    <option value="rpg">RPG</option>
-                    <option value="action">Action</option>
-                    <option value="platform">Platformer</option>
-                    <option value="horror">Horror</option>
-                    <option value="survival">Survival</option>
-                    <option value="puzzle">Puzzle</option>
-                    <option value="other">Other</option>
+                    <option value="None"></option>
+                    <option value="Sports">Sports</option>
+                    <option value="Racing">Racing</option>
+                    <option value="Mmo">MMO</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Rpg">RPG</option>
+                    <option value="Action">Action</option>
+                    <option value="Platform">Platformer</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Survival">Survival</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Other">Other</option>
                 </select>
                 
               </br>
                 <label for="rate">Rating out of 5: </label>
-                <select name="rate" id="rate">
+                <select id="rating" name="rate" id="rate">
+                <option value=" "> </option>
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -136,8 +139,8 @@
                 </select>
             </br>
                 <textarea id="newReview">Why?</textarea>
-        
-              <button type="button" class="btn btn-default btn-sm">
+            
+              <button id="createReview" type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-bullhorn"></span> share review
               </button> 
             </div>
@@ -146,75 +149,7 @@
           </div>
         </div>
     </br>
-      <div class="reviews">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>John</p>
-           <img src="maleAvatar.PNG" class="img-circle" height="45" width="45" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9" >
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-fire"></span> Enjoyed game
-              <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-thumbs-down"></span> Did not enjoy game
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Bo</p>
-           <img src="maleAvatar.PNG" class="img-circle" height="45" width="45" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-              <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-thumbs-down"></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Jane</p>
-           <img src="femaleAvatar.jpg" class="img-circle" height="45" width="45" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-              <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-thumbs-down"></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Anja</p>
-           <img src="femaleAvatar.jpg" class="img-circle" height="45" width="45" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-              <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-thumbs-down"></span>
-          </div>
-        </div>
-      </div>     
+      <div id="reviews">    
     </div>
   </div>
 </div>
