@@ -1,3 +1,5 @@
+if (localStorage.getItem("userId") == "undefined" || localStorage.getItem("userId") == null) location.href = "/login.html"
+
 const $reviewsContainer = document.getElementById("reviews")
 const $usersContainer = document.getElementById("users")
 document.getElementById("createReview")
@@ -8,20 +10,18 @@ spawnReviews()
 
 //spawnUsers()
 
-let user_id
-
 function createReview(e) {
     e.preventDefault()
 
     fetch("/create", {
         body: JSON.stringify({
             userId: localStorage.getItem("userId"),
-            videogame: document.getElementById("videogame"),
-            publisher: document.getElementById("publisher"),
-            developer: document.getElementById("developer"),
-            genre: document.getElementById("genre"),
-            rate: document.getElementById("rating"),
-            reason: document.getElementById("reason")
+            videogame: document.getElementById("videogame").value,
+            publisher: document.getElementById("publisher").value,
+            developer: document.getElementById("developer").value,
+            genre: document.getElementById("genre").value,
+            rate: document.getElementById("rating").value,
+            reason: document.getElementById("newReview").value
         }),
         method: "POST",
         headers: {
@@ -95,7 +95,7 @@ function addFriend(e) {
 
     const payload = {
         body: JSON.stringify({
-            user_id: user_id,
+            user_id: localStorage.getItem("userId"),
             friend_id: friend_id
         }),
         method: "POST",

@@ -2,13 +2,13 @@ const express = require('express')
 const sqlite3 = require('sqlite3')
 const app = new express()
 const db = new sqlite3.Database('./db/gamepage.db')
-const reviews = loadData().reviews
+
 
 app.use(express.static('public'))
 app.use(express.json())
 
 app.get("/reviews", (req,res) => {
-    const sql = "SELECT * FROM reviews;"
+    const sql = "SELECT * FROM reviews"
     db.all(sql,[],(err, rows) => {
         res.send(rows)
     })
@@ -35,18 +35,13 @@ app.post("/friends", (req, res) => {
 
 app.post("/reviews", (req,res)=> {
     const review = req.body;
-    if (review.text.length >= 5) {
-        const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?);"
-        db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.text, 0])
+    const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.reason, review.userId], (err) => {
+        if (err) console.error(err)
         res.send({
             message: "Review successfully saved"
         })
-    }
-    else {
-        res.send({
-            message: "Review is not long enough."
-        })
-    }
+    })
 })
 
 app.post("/login", (req, res) => {
@@ -86,12 +81,3 @@ app.post("/login", (req, res) => {
 })
 
 app.listen(3000, () => console.log("Server started"))
-
-function loadData() {
-    return {
-        users:
-        [
-            
-        ]
-    }
-}
