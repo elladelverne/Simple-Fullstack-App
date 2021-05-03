@@ -23,7 +23,10 @@ app.get("/users", (req,res) => {
 app.post("/reviews", (req,res)=> {
     const review = req.body;
     const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, userId) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.reason, review.userId])
+    db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.reason, review.userId], err => {
+        if (err) console.error(err)
+        res.send({message: "Successful review post!"})
+    })
 })
 
 app.post("/login", (req, res) => {
