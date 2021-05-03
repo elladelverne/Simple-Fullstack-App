@@ -13,7 +13,7 @@ spawnReviews()
 function createReview(e) {
     e.preventDefault()
 
-    fetch("/create", {
+    const payload = {
         body: JSON.stringify({
             userId: localStorage.getItem("userId"),
             videogame: document.getElementById("videogame").value,
@@ -27,11 +27,12 @@ function createReview(e) {
         headers: {
             "Content-Type": "application/json"
         }
-    })
+    }
+    fetch("/reviews", payload)
         .then(res => res.json())
-        .then(res => {
-        })
+        .then(res => console.log(res.body))
         .catch(err => console.error(err))
+   
 }
 
 function spawnReviews() {
@@ -42,7 +43,7 @@ function spawnReviews() {
         <div class="row">
           <div class="col-sm-3">
             <div class="well" data-reviewid=${review.id}>
-             <p>${review.user_id}</p>
+             <p>${review.username}</p>
              <img src="maleAvatar.PNG" class="img-circle" height="45" width="45" alt="Avatar">
             </div>
           </div>
@@ -68,51 +69,4 @@ function spawnReviews() {
     })
     .catch(err => console.error(err))
    
-}
-
-function spawnUsers() {
-    fetch("/users")
-     .then(res => res.json())
-     .then(users => {
-         const usersHTML = users.map( user => `
-         <div class="user" data-userid=${user.id}>
-             <p>${user.username}</p>
-             <div class="details">
-                 <div>${user.firstName}</div>
-             </div>
-             <button onclick="e => {addFriend(e);}">Add Friend</button>
-         </div>
-         ` ).join("")
-         $usersContainer.innerHTML = usersHTML
-     })
-     .catch(err => console.error(err))
-    
- }
-
-function addFriend(e) {
-    const $userDiv = e.target.parentElement
-    const friend_id = $userDiv.userid
-
-    const payload = {
-        body: JSON.stringify({
-            user_id: localStorage.getItem("userId"),
-            friend_id: friend_id
-        }),
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }
-    fetch("/friends", payload)
-        .then(res => res.json())
-        .then(res => console.log(res.body))
-        .catch(error => console.error(error))
-}
-
-function loadData() {
-    return {
-        posts: [
-            
-        ]
-    }
 }

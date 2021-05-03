@@ -3,12 +3,11 @@ const sqlite3 = require('sqlite3')
 const app = new express()
 const db = new sqlite3.Database('./db/gamepage.db')
 
-
 app.use(express.static('public'))
 app.use(express.json())
 
 app.get("/reviews", (req,res) => {
-    const sql = "SELECT * FROM reviews"
+    const sql = "SELECT * FROM reviews JOIN users ON reviews.userId = users.id;"
     db.all(sql,[],(err, rows) => {
         res.send(rows)
     })
@@ -21,27 +20,10 @@ app.get("/users", (req,res) => {
     })
 })
 
-app.post("/friends", (req, res) => {
-    const friendship = req.body
-    const sql = "INSERT INTO users_users (userid1, userid2) VALUES (?,?)"
-    db.run(sql,[friendship.user_id, friendship.friend_id],(err) => {
-        if (err) console.error(err)
-        res.send({
-            message: "You are now friends!",
-            friendshipID: this.lastID
-        })
-    })
-})
-
 app.post("/reviews", (req,res)=> {
     const review = req.body;
-    const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.reason, review.userId], (err) => {
-        if (err) console.error(err)
-        res.send({
-            message: "Review successfully saved"
-        })
-    })
+    const sql = "INSERT INTO reviews (videogame, publisher, developer, genre, rate, reason, userId) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    db.run(sql,[review.videogame, review.publisher, review.developer, review.genre, review.rate, review.reason, review.userId])
 })
 
 app.post("/login", (req, res) => {
