@@ -7,6 +7,7 @@ document.getElementById("createReview")
 
 
 spawnReviews()
+loadUser()
 
 //spawnUsers()
 
@@ -30,9 +31,21 @@ function createReview(e) {
     }
     fetch("/reviews", payload)
         .then(res => res.json())
-        .then(res => console.log(res.body))
+        .then(spawnReviews())
         .catch(err => console.error(err))
    
+}
+
+function loadUser(){
+  fetch("/users")
+    .then(res => res.json())
+    .then(users => {
+      let username
+      users.forEach(user => {
+        if (user.id == localStorage.getItem("userId")) username = user.username
+      })
+      document.getElementById("username").innerHTML = username
+    })
 }
 
 function spawnReviews() {
@@ -50,7 +63,7 @@ function spawnReviews() {
           <div class="col-sm-9" >
             <div class="well">
               <p>
-                Game:${review.videogame}<br>
+                Game: ${review.videogame}<br>
                  Publisher: ${review.publisher}<br>
                  Developer: ${review.developer}<br>
                  Genre: ${review.genre}<br>

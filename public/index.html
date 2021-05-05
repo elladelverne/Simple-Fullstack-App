@@ -31,7 +31,6 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Messages</a></li>
         <li><a href="./login.html" onclick="localStorage.clear()">Log Out</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
@@ -55,7 +54,7 @@
   <div class="row"></div>
     <div class="col-sm-3 well">
       <div class="well">
-        <p><a href="#">My Profile</a></p>
+        <p id="username"></p>
         <img src="maleAvatar.PNG" class="img-circle" height="65" width="65" alt="Avatar">
       </div>
       <div class="well">
@@ -69,14 +68,6 @@
           <span class="label label-danger">Friends</span>
         </p>
       </div>
-      <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
-      </div>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
     </div>
     <div class="col-sm-7">
     
@@ -151,6 +142,7 @@
     </br>
       <div id="reviews">    
     </div>
+    <br><br><br>
   </div>
 </div>
       
@@ -158,7 +150,7 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center" style="position: fixed; bottom: 0px; width: 100%;">
   <p>Gamers unite</p>
 </footer>
 <script src="script.js"></script>

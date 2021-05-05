@@ -18,3 +18,8 @@ div.personal  {
     background-color: black;
     color: cornsilk;
 }
+
+footer {
+    position: relative;
+    bottom: 0px;
+}
